@@ -1,0 +1,8 @@
+@import './app-layout.css';
+
+.app-layout-min {
+  @extend .app-layout;
+  grid-template-areas:
+    'header'
+    'main';
+}

@@ -1,0 +1,19 @@
+.tile{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+.tile-content {
+    padding-left: 50pt;
+    padding-right: 50pt;
+    /* text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; */
+}

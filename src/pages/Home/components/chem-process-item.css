@@ -1,0 +1,11 @@
+.tile-content-item {
+    background: #c4e7ea;
+    width: 9em;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
