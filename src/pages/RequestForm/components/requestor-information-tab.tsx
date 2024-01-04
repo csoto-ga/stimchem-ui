@@ -1,4 +1,4 @@
-import TextBox from '@components/form/TextBox';
+import TextBox from '@components/form/Textbox';
 import { Tabs } from 'react-daisyui';
 import { useFormContext } from 'react-hook-form';
 import { FormInput } from '../schema';

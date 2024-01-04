@@ -3,7 +3,7 @@ import { TabProps } from './types';
 import { FormInput } from '../schema';
 import { Tabs } from 'react-daisyui';
 import Dropdown from '@components/form/Dropdown';
-import TextBox from '@components/form/TextBox';
+import TextBox from '@components/form/Textbox';
 import { CONTENT_TAB_STYLE } from './constants';
 
 const StatusAndFinanceTab = ({ indexTab, activeTab, setActiveTab }: TabProps) => {

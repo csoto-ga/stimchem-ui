@@ -1,6 +1,6 @@
 import { Tabs } from 'react-daisyui';
 import { TabProps } from './types';
-import TextArea from '@components/form/TextArea';
+import TextArea from '@components/form/Textarea';
 import Dropdown from '@components/form/Dropdown';
 import { useFormContext } from 'react-hook-form';
 import { FormInput } from '../schema';
