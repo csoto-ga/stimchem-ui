@@ -1,0 +1,12 @@
+parameters:
+  - name: image_registry
+    type: string
+  - name: image_name
+    type: string
+  - name: image_tag
+    type: string
+    default: latest
+
+steps:
+  - bash: docker push ${{ parameters.image_registry }}/${{ parameters.image_name }}:${{ parameters.image_tag }}
+    displayName: Push docker image ${{ parameters.image_name }} to ${{ parameters.image_registry }}

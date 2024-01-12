@@ -1,0 +1,6 @@
+stages:
+  - stage: build
+    pool:
+      vmImage: ubuntu-latest # Default agent pool for Azure Pipelines
+    jobs:
+      - job: build_docker_images

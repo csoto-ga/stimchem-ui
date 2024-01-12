@@ -1,0 +1,30 @@
+parameters:
+  - name: wait_timeout
+    type: string
+    default: 5m
+  - name: max_retries
+    type: number
+    default: 30
+  - name: interval_seconds
+    type: number
+    default: 10
+  - name: deployment_name
+    type: string
+  - name: deployment_namespace
+    type: string
+    default: default
+
+steps:
+  - bash: |
+      kubectl wait --for=condition=available deployment ${{ parameters.deployment_name }} --namespace ${{ parameters.deployment_namespace }} --timeout=${{ parameters.wait_timeout }}
+      # i=0
+      # while [[ ! $(kubectl wait --for=condition=available deployment ${{ parameters.deployment_name }} --namespace ${{ parameters.deployment_namespace }}) ]]; do
+      #   if [[ i == ${{ parameters.max_retries }} ]]; then
+      #     echo "deployment ${{ parameters.deployment_name }} in namespace ${{ parameters.deployment_namespace }}" is not ready && exit 1
+      #   fi
+      #   i=$((i+1))
+      #   echo "waiting for deployment ${{ parameters.deployment_name }} in namespace ${{ parameters.deployment_namespace }} to become available"
+      #   sleep ${{ parameters.interval_seconds }}
+      # done
+      echo "deployment ${{ parameters.deployment_name }} in namespace ${{ parameters.deployment_namespace }} is available"
+    displayName: Wait for deployment ${{ parameters.deployment_name }} in namespace ${{ parameters.deployment_namespace }} to become available
