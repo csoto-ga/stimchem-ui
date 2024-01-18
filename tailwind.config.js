@@ -15,16 +15,24 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    // require('@tailwindcss/forms'),
-    // require('@tailwindcss/typography'),
-    // require('@tailwindcss/line-clamp'),
-    require('daisyui'),
-  ],
+  plugins: [require('daisyui')],
   // daisyUI config (optional - here are the default values)
   daisyui: {
-    themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
-    darkTheme: 'light', // name of one of the included themes for dark mode
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/theming/themes')['light'],
+          primary: '#cc0000',
+          'primary-focus': '#ff6666',
+          secondary: '#000000',
+          'secondary-focus': '#616161',
+          neutral: '#808080',
+          'neutral-focus': '#525252',
+        },
+      },
+    ],
+    //themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+    //darkTheme: 'light', // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
     utils: true, // adds responsive and modifier utility classes
