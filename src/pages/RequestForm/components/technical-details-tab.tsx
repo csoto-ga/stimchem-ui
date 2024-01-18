@@ -1,18 +1,13 @@
 import { Tabs } from 'react-daisyui';
 import { TabProps } from './types';
 import TextArea from '@components/form/Textarea';
-import Dropdown from '@components/form/Dropdown';
-import { useFormContext } from 'react-hook-form';
-import { FormInput } from '../schema';
 import TabContent from './tab-content';
-import TabContentCard from './tab-content-card';
 import { CONTENT_TAB_STYLE } from './constants';
+import TextBox from '@components/form/Textbox';
+import useFormContextExtended from './useFormContextExtended';
 
 const TechnicalDetailsTab = ({ indexTab, activeTab, setActiveTab }: TabProps) => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext<FormInput>();
+  const { extendRegister, errors } = useFormContextExtended();
 
   return (
     <Tabs.RadioTab
@@ -23,27 +18,29 @@ const TechnicalDetailsTab = ({ indexTab, activeTab, setActiveTab }: TabProps) =>
       contentClassName={CONTENT_TAB_STYLE}
     >
       <TabContent>
-        <TabContentCard>
+        <div>
+          <TextBox label="Well Name" {...extendRegister('well_name')} />
+          <TextBox label="Depth (ft)" {...extendRegister('depth')} />
+          <TextBox
+            label="Bottom Hole Temperature (°F)"
+            {...extendRegister('bottom_hole_temperature')}
+          />
+          <TextBox label="Bottom Hole Pressure (psi)" {...extendRegister('bottom_hole_pressure')} />
+        </div>
+
+        <div className="flex flex-auto grow">
           <TextArea
-            label="Type of Data Being Requested"
-            error={errors.type_of_data_being_requested?.message}
-            {...register('type_of_data_being_requested')}
+            label="Type of Data Requested"
+            className="w-[23rem] h-[283px] rounded-badge"
+            error={errors.type_of_data_requested?.message}
+            {...extendRegister('type_of_data_requested')}
           />
-          <Dropdown
-            label="Will you be shipping samples"
-            {...register('shipping_samples')}
-            error={errors.shipping_samples?.message}
-            options={[
-              { key: '1', text: 'Sample 1', value: '1' },
-              { key: '2', text: 'Sample 2', value: '2' },
-              { key: '3', text: 'Sample 3', value: '3' },
-              { key: '4', text: 'Sample 4', value: '4' },
-            ]}
+          <TextArea
+            label="Fluid Details"
+            className="w-[23rem] h-[283px] rounded-badge"
+            {...extendRegister('fluid_details')}
           />
-        </TabContentCard>
-        <TabContentCard>
-          <TextArea label="Fluid Details" {...register('fluid_details')} />
-        </TabContentCard>
+        </div>
       </TabContent>
     </Tabs.RadioTab>
   );

@@ -5,7 +5,7 @@ type TabContentProps = {
 };
 
 const TabContent = ({ children }: TabContentProps) => {
-  return <div className="flex justify-center flex-wrap">{children}</div>;
+  return <div className="flex">{children}</div>;
 };
 
 export default TabContent;

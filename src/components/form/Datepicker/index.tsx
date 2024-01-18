@@ -6,18 +6,22 @@ type Props = {
   error?: string;
   value: DateValueType;
   onChange: (newValue: DateValueType) => void;
+  is_required?: string;
 };
 
-const Datepicker = ({ label, error, value, onChange, ...rest }: Props) => {
+const Datepicker = ({ label, error, value, onChange, is_required, ...rest }: Props) => {
   return (
-    <div className="flex w-full component-preview p-0.5 items-center justify-center gap-2 font-sans">
+    <div className="flex w-full component-preview p-1 pb-3 items-center justify-center gap-2 font-sans">
       <div className="form-control w-full max-w-xs">
         <label className="label">
-          <span className="label-text">{label}</span>
+          <span className="label-text">
+            {label}
+            {is_required && <span className="label-text text-red-400"> * </span>}
+          </span>
           {error && <span className="label-text-alt text-red-400">{error}</span>}
         </label>
         <ReactDatepicker
-          containerClassName="relative mt-0.5"
+          containerClassName="relative"
           inputClassName={clsx('input input-sm input-bordered w-full max-w-xs', {
             'border-1 border-red-400 focus:border-red-400 input input-sm input-bordered w-full max-w-xs':
               error,

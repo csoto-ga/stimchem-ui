@@ -10,23 +10,27 @@ type TabsNavigatorProps = {
 const TabsNavigator = ({ activeTabState, totalTabs }: TabsNavigatorProps) => {
   const [, setActiveTab] = activeTabState;
   return (
-    <div className="tab-content bg-base-100 border-base-300 rounded-box border-t-0 rounded-t-none pb-2 flex justify-center items-center h-full">
+    <div className="border-base-300 rounded-box border-t-0 rounded-t-none pb-2 flex justify-center items-center h-full">
       <div className="w-full flex justify-center items-center gap-2 ">
         <Button
+          size="sm"
+          className="bg-base-100"
           type="button"
           variant="outline"
           shape="square"
           onClick={() => setActiveTab((prevTab) => (prevTab === 1 ? totalTabs : prevTab - 1))}
         >
-          <ChevronLeftIcon className="h-8 w-8" />
+          <ChevronLeftIcon className="h-6 w-6" />
         </Button>
         <Button
+          size="sm"
+          className="bg-base-100"
           type="button"
           variant="outline"
           shape="square"
           onClick={() => setActiveTab((prevTab) => (prevTab === totalTabs ? 1 : prevTab + 1))}
         >
-          <ChevronRightIcon className="h-8 w-8" />
+          <ChevronRightIcon className="h-6 w-6" />
         </Button>
       </div>
     </div>

@@ -5,7 +5,7 @@ type TabContentCardProps = {
 };
 
 const TabContentCard = ({ children }: TabContentCardProps) => {
-  return <div className="w-2/5 px-1">{children}</div>;
+  return <div className="w-1/2 px-1">{children}</div>;
 };
 
 export default TabContentCard;

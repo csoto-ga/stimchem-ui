@@ -8,6 +8,7 @@ type Props = {
   defaultText?: string;
   options?: Option[];
   error?: string;
+  is_required?: string;
 };
 
 export interface Option {
@@ -18,21 +19,31 @@ export interface Option {
 
 const Dropdown = React.forwardRef<HTMLSelectElement, Props>(
   (
-    { label, defaultValue = '', defaultText = 'Pick one', options = [], error, ...restProps },
+    {
+      label,
+      defaultValue = '',
+      defaultText = 'Pick one',
+      options = [],
+      error,
+      is_required,
+      ...restProps
+    },
     ref
   ) => {
     return (
-      <div className="flex w-full component-preview p-1 items-center justify-center gap-2 font-sans">
+      <div className="flex w-full component-preview p-1 pb-3 items-center justify-center gap-2 font-sans">
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">{label}</span>
+            <span className="label-text">
+              {label}
+              {is_required && <span className="label-text text-red-400"> * </span>}
+            </span>
             {error && <span className="label-text-alt text-red-400">{error}</span>}
           </label>
           <Select
             ref={ref}
             size="sm"
             defaultValue={defaultValue}
-            //onChange={console.log}
             className={clsx({ 'border-1 border-red-400 focus:border-red-400': error })}
             {...restProps}
           >

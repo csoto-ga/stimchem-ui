@@ -4,13 +4,10 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormInput, schema } from './schema';
 import { DateValueType } from 'react-tailwindcss-datepicker';
-import RequestorInformationTab from './components/requestor-information-tab';
 import RequestDetailsTab from './components/request-details-tab';
-import CustomerInformationTab from './components/customer-information-tab';
 import TechnicalDetailsTab from './components/technical-details-tab';
-import StatusAndFinanceTab from './components/status-and-finance-tab';
-import TabsNavigator from './components/tabs-navigator';
-import SubmitButtons from './components/submit-buttons';
+import ProjectDetails from './components/project-details';
+import TabsFooter from './components/tabs-footer';
 
 const RequestForm = () => {
   const activeTabState = useState<number>(1);
@@ -21,19 +18,20 @@ const RequestForm = () => {
   };
   const dateOfRequestState = useState<DateValueType>(dateInitialValue);
   const dateFinalReportState = useState<DateValueType>(dateInitialValue);
+  const dateReadyCloseState = useState<DateValueType>(dateInitialValue);
   const [, setDateOfRequestValue] = dateOfRequestState;
   const [, setDateFinalReportValue] = dateFinalReportState;
 
-  const totalTabs = 5;
+  const totalTabs = 3;
 
   const methods = useForm<FormInput>({
     mode: 'onChange',
     resolver: zodResolver(schema),
   });
-  // console.log('errors: ', errors);
   // console.log('dateValue: ', dateOfRequestValue);
   // console.log('touchedFields: ', touchedFields);
   //console.log(watch('firstName')); // watch input value by passing the name of it
+  //console.log('values: ', methods.getValues());
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     console.log('onSubmit', data);
   };
@@ -57,13 +55,15 @@ const RequestForm = () => {
             setActiveTab={setActiveTab}
             {...{ dateOfRequestState, dateFinalReportState }}
           />
-          <RequestorInformationTab indexTab={2} activeTab={activeTab} setActiveTab={setActiveTab} />
-          <CustomerInformationTab indexTab={3} activeTab={activeTab} setActiveTab={setActiveTab} />
-          <TechnicalDetailsTab indexTab={4} activeTab={activeTab} setActiveTab={setActiveTab} />
-          <StatusAndFinanceTab indexTab={5} activeTab={activeTab} setActiveTab={setActiveTab} />
+          <TechnicalDetailsTab indexTab={2} activeTab={activeTab} setActiveTab={setActiveTab} />
+          <ProjectDetails
+            indexTab={3}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            {...{ dateReadyCloseState }}
+          />
         </Tabs>
-        <TabsNavigator {...{ totalTabs, activeTabState }} />
-        <SubmitButtons reset={formReset} />
+        <TabsFooter reset={formReset} {...{ totalTabs, activeTabState }} />
       </Form>
     </FormProvider>
   );
