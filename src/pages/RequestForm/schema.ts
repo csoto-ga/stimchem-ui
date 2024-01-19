@@ -20,6 +20,10 @@ enum TypeOfApplicationOptions {
   Type3 = '3',
   Type4 = '4',
 }
+enum TypeDualOptions {
+  Yes = 'true',
+  No = 'false',
+}
 
 const DATE_REGEX_MATCHER = /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/; // YYYY-MM-DD
 
@@ -29,7 +33,9 @@ export const schema = z.object({
   phone: z.string().min(1, { message: 'Required' }),
   email: z.string().min(1, { message: 'Required' }).email(),
   customer: z.string().min(1, { message: 'Required' }),
-  is_tender: z.boolean().default(false),
+  is_request_for_tender_bid: z.nativeEnum(TypeDualOptions, {
+    errorMap: () => ({ message: 'Required' }),
+  }),
   formation_name: z.string(),
   field_name: z.string(),
   type_of_request: z.nativeEnum(TypeOfRequestOptions, {
@@ -42,7 +48,9 @@ export const schema = z.object({
     errorMap: () => ({ message: 'Required' }),
   }),
   project_revenue: z.string().min(1, { message: 'Required' }),
-  is_shipping_samples: z.boolean().default(false),
+  is_shipping_samples: z.nativeEnum(TypeDualOptions, {
+    errorMap: () => ({ message: 'Required' }),
+  }),
   cost_center: z.string().min(1, { message: 'Required' }),
   well_name: z.string(),
   depth: z.string(),

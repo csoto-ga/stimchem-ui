@@ -10,7 +10,6 @@ import { Dispatch, SetStateAction } from 'react';
 import { DateValueType } from 'react-tailwindcss-datepicker';
 import { CONTENT_TAB_STYLE } from './constants';
 import useFormContextExtended from './useFormContextExtended';
-import Swap from '@components/form/Swap';
 
 type RequestDetailsTabProps = {
   dateOfRequestState: [DateValueType, Dispatch<SetStateAction<DateValueType>>];
@@ -53,7 +52,15 @@ const RequestDetailsTab = ({
             error={errors.customer?.message}
             {...extendRegister('customer')}
           />
-          <Swap label="Request for a Tender/Bid?" {...extendRegister('is_tender')} />
+          <Dropdown
+            label="Request for a Tender/Bid?"
+            {...extendRegister('is_request_for_tender_bid')}
+            error={errors.type_of_request?.message}
+            options={[
+              { key: '1', text: 'Yes', value: 'true' },
+              { key: '2', text: 'No', value: 'false' },
+            ]}
+          />
           <TextBox label="Formation Name" {...extendRegister('formation_name')} />
           <TextBox label="Field Name" {...extendRegister('field_name')} />
         </TabContentCard>
@@ -131,7 +138,15 @@ const RequestDetailsTab = ({
               />
             )}
           />
-          <Swap label="Shipping samples?" {...extendRegister('is_shipping_samples')} />
+          <Dropdown
+            label="Shipping samples?"
+            {...extendRegister('is_shipping_samples')}
+            error={errors.type_of_request?.message}
+            options={[
+              { key: '1', text: 'Yes', value: 'true' },
+              { key: '2', text: 'No', value: 'false' },
+            ]}
+          />
           <TextBox
             label="Cost Center"
             error={errors.cost_center?.message}

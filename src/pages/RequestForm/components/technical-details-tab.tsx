@@ -18,7 +18,7 @@ const TechnicalDetailsTab = ({ indexTab, activeTab, setActiveTab }: TabProps) =>
       contentClassName={CONTENT_TAB_STYLE}
     >
       <TabContent>
-        <div>
+        <div className="px-1 w-72">
           <TextBox label="Well Name" {...extendRegister('well_name')} />
           <TextBox label="Depth (ft)" {...extendRegister('depth')} />
           <TextBox
@@ -28,16 +28,16 @@ const TechnicalDetailsTab = ({ indexTab, activeTab, setActiveTab }: TabProps) =>
           <TextBox label="Bottom Hole Pressure (psi)" {...extendRegister('bottom_hole_pressure')} />
         </div>
 
-        <div className="flex flex-auto grow">
+        <div className="px-1 flex flex-auto w-0">
           <TextArea
             label="Type of Data Requested"
-            className="w-[23rem] h-[283px] rounded-badge"
+            className="w-[30vw] h-[283px] rounded-badge"
             error={errors.type_of_data_requested?.message}
             {...extendRegister('type_of_data_requested')}
           />
           <TextArea
             label="Fluid Details"
-            className="w-[23rem] h-[283px] rounded-badge"
+            className="w-[30vw] h-[283px] rounded-badge"
             {...extendRegister('fluid_details')}
           />
         </div>

@@ -16,7 +16,10 @@ const RequestForm = () => {
     startDate: null,
     endDate: null,
   };
-  const dateOfRequestState = useState<DateValueType>(dateInitialValue);
+  const dateOfRequestState = useState<DateValueType>({
+    startDate: new Date(),
+    endDate: new Date(),
+  });
   const dateFinalReportState = useState<DateValueType>(dateInitialValue);
   const dateReadyCloseState = useState<DateValueType>(dateInitialValue);
   const [, setDateOfRequestValue] = dateOfRequestState;
@@ -31,7 +34,7 @@ const RequestForm = () => {
   // console.log('dateValue: ', dateOfRequestValue);
   // console.log('touchedFields: ', touchedFields);
   //console.log(watch('firstName')); // watch input value by passing the name of it
-  //console.log('values: ', methods.getValues());
+  console.log('values: ', methods.getValues());
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     console.log('onSubmit', data);
   };

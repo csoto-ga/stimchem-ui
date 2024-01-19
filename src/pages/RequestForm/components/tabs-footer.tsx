@@ -15,15 +15,15 @@ const TabsFooter = ({ reset, totalTabs, activeTabState }: TabsFooterProps) => {
     formState: { isValid },
   } = useFormContext<FormInput>();
   return (
-    <div className="flex mt-4">
+    <div className="flex mt-4 items-center gap-2">
       <div className="w-full">
         <TabsNavigator {...{ totalTabs, activeTabState }} />
       </div>
-      <div className="w-0 flex justify-end">
-        <Button color="neutral" className="mr-2" size="xs">
+      <div className="w-0 flex justify-end gap-2">
+        <Button color="neutral" size="xs">
           Save
         </Button>
-        <Button color="secondary" className="mr-2" size="xs" type="submit" disabled={!isValid}>
+        <Button color="secondary" size="xs" type="submit" disabled={!isValid}>
           Submit
         </Button>
         <Button size="xs" color="primary" type="reset" onClick={() => reset()}>
