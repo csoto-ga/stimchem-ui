@@ -22,6 +22,7 @@ const DropdownMenu = () => {
       <Dropdown.Menu className="menu-sm w-52 mt-3 z-[10]">
         <Dropdown.Item href="/home">Home</Dropdown.Item>
         <Dropdown.Item href="/request">Request</Dropdown.Item>
+        <Dropdown.Item href="/experiment/corrosion/create">Corrosion</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

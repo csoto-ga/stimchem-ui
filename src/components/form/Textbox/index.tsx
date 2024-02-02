@@ -7,9 +7,11 @@ type TextBoxProps = {
   placeholder?: string;
   error?: string;
   is_required?: string;
+  value?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 const TextBox = React.forwardRef<HTMLInputElement, TextBoxProps>(
-  ({ label, placeholder, error, is_required, ...restProps }, ref) => {
+  ({ label, placeholder, error, value, onChange, is_required, ...restProps }, ref) => {
     return (
       <div className="flex w-full component-preview p-1 pb-3 items-center justify-center gap-2 font-sans">
         <div className="form-control w-full max-w-xs">
@@ -20,12 +22,15 @@ const TextBox = React.forwardRef<HTMLInputElement, TextBoxProps>(
             </span>
             {error && <span className="label-text-alt text-red-400">{error}</span>}
           </label>
+
           <Input
             ref={ref}
+            value={value}
             className={clsx({ 'border-1  border-red-400 focus:border-red-400': error })}
             size="sm"
             bordered={true}
             placeholder={placeholder}
+            onChange={onChange}
             {...restProps}
           />
         </div>

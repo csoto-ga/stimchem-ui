@@ -10,6 +10,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { DateValueType } from 'react-tailwindcss-datepicker';
 import { CONTENT_TAB_STYLE } from './constants';
 import useFormContextExtended from './useFormContextExtended';
+import { dpConfig } from './dummy-dropdown-config';
 
 type RequestDetailsTabProps = {
   dateOfRequestState: [DateValueType, Dispatch<SetStateAction<DateValueType>>];
@@ -56,10 +57,7 @@ const RequestDetailsTab = ({
             label="Request for a Tender/Bid?"
             {...extendRegister('is_request_for_tender_bid')}
             error={errors.type_of_request?.message}
-            options={[
-              { key: '1', text: 'Yes', value: 'true' },
-              { key: '2', text: 'No', value: 'false' },
-            ]}
+            options={dpConfig.booleanOptions}
           />
           <TextBox label="Formation Name" {...extendRegister('formation_name')} />
           <TextBox label="Field Name" {...extendRegister('field_name')} />
@@ -69,34 +67,19 @@ const RequestDetailsTab = ({
             label="Type of Request"
             {...extendRegister('type_of_request')}
             error={errors.type_of_request?.message}
-            options={[
-              { key: '1', text: 'Type 1', value: '1' },
-              { key: '2', text: 'Type 2', value: '2' },
-              { key: '3', text: 'Type 3', value: '3' },
-              { key: '4', text: 'Type 4', value: '4' },
-            ]}
+            options={dpConfig.typeOptions}
           />
           <Dropdown
             label="Application"
             {...extendRegister('application')}
             error={errors.status?.message}
-            options={[
-              { key: '1', text: 'App 1', value: '1' },
-              { key: '2', text: 'App 2', value: '2' },
-              { key: '3', text: 'App 3', value: '3' },
-              { key: '4', text: 'App 4', value: '4' },
-            ]}
+            options={dpConfig.appOptions}
           />
           <Dropdown
             label="PSL"
             error={errors.psl?.message}
             {...extendRegister('psl')}
-            options={[
-              { key: '1', text: 'PSL 1', value: '1' },
-              { key: '2', text: 'PSL 2', value: '2' },
-              { key: '3', text: 'PSL 3', value: '3' },
-              { key: '4', text: 'PSL 4', value: '4' },
-            ]}
+            options={dpConfig.pslOptions}
           />
           <TextBox
             label="Project Revenue"
@@ -142,10 +125,7 @@ const RequestDetailsTab = ({
             label="Shipping samples?"
             {...extendRegister('is_shipping_samples')}
             error={errors.type_of_request?.message}
-            options={[
-              { key: '1', text: 'Yes', value: 'true' },
-              { key: '2', text: 'No', value: 'false' },
-            ]}
+            options={dpConfig.booleanOptions}
           />
           <TextBox
             label="Cost Center"

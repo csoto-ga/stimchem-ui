@@ -1,5 +1,6 @@
 import React from 'react';
 import { Select } from 'react-daisyui';
+import { Option } from './types';
 import clsx from 'clsx';
 
 type Props = {
@@ -10,12 +11,6 @@ type Props = {
   error?: string;
   is_required?: string;
 };
-
-export interface Option {
-  key: string;
-  value: string;
-  text: string;
-}
 
 const Dropdown = React.forwardRef<HTMLSelectElement, Props>(
   (
